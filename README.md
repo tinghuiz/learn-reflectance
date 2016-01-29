@@ -28,6 +28,7 @@ and the DenseCRF package:
 cd bell2014/krahenbuhl2013/
 make
 ```
+(If you encounter problems with cmake, it might be that Ubuntu 14.04 (or older version) does not recognize Python 3.4 directly. You will need to add 3.4 to the line with 'set(_PYTHON3_VERSIONS ...)' for the system's 'FindPythonInterp.cmake' and 'FindPythonLibs.cmake' files.)
 
 #### Running the demo:
 Once the above installation is complete, running
