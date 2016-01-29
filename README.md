@@ -37,8 +37,13 @@ python3 demo.py
 should output the decomposition of 'sample.png' to 'sample-r.png' and 'sample-s.png', respectively. 'sample.png' corresponds to the teaser example (Fig. 1) in our paper.
 
 #### Decomposition on the IIW test split:
-The original IIW dataset does not provide a training/test split. Instead, we used the split provided by "Learning Lightness from Human Judgement on Relative Reflectance, Narihira et al., CVPR 2015" for our experiments. To run our full decomposition pipeline on the test split:
+The original IIW dataset does not provide a training/test split. Instead, we used the split provided by "Learning Lightness from Human Judgement on Relative Reflectance, Narihira et al., CVPR 2015" for our experiments. To evaluate the network performance on relative reflectance judgment:
 ```base
-cd iiw_experiment/
-python3 run_iiw_experiment.py [Path to IIW dataset] [Output directory]
+cd iiw_experiments/
+python3 eval_network.py [Path to IIW directory]
+```
+To evaluate the decomposition performance using our learned reflectance prior:
+```base
+cd iiw_experiments/
+python3 eval_decomposition.py [Path to IIW directory] [Output directory]
 ```
