@@ -1,7 +1,15 @@
 learn-reflectance
 ===========================
 
-This implements the intrinsic image decomposition algorithm described in "Learning Data-driven Reflectance Priors for Intrinsic Image Decomposition, T. Zhou, P. Krähenbühl and A. A. Efros, ICCV 2015".
+This implements the intrinsic image decomposition algorithm described in "Learning Data-driven Reflectance Priors for Intrinsic Image Decomposition, T. Zhou, P. Krähenbühl and A. A. Efros, ICCV 2015". If you use our code for academic purposes, please consider citing:
+
+    @inproceedings{zhou2015learning,
+	  	title={Learning data-driven reflectance priors for intrinsic image decomposition},
+	  	author={Zhou, Tinghui and Kr\"ahenb\"uhl, Philipp and Efros, Alexei A},
+	  	booktitle={Proceedings of the IEEE International Conference on Computer Vision},
+	  	pages={3469--3477},
+	  	year={2015}
+	}
 
 #### Dependencies & Compilation:
 * The codebase was tested with Python 3, but it should be straightforward to adapt it to Python 2 if needed. 

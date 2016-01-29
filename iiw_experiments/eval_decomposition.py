@@ -48,4 +48,4 @@ for id in test_ids:
 	ref = image_util.load(args.output_dir + str(id) + '-r.png')
 	whdr_sum += evaluator.compute_whdr(ref)
 whdr_mean = whdr_sum/len(test_ids)
-print('Mean WHDR = %.4f' % whdr_mean)
+print('WHDR = %f' % whdr_mean)
