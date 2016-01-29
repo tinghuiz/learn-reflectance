@@ -36,7 +36,7 @@ python3 demo.py
 ```
 should output the decomposition of 'sample.png' to 'sample-r.png' and 'sample-s.png', respectively. 'sample.png' corresponds to the teaser example (Fig. 1) in our paper.
 
-#### Decomposition on the IIW test split:
+#### Evaluation on the IIW test split:
 The original IIW dataset does not provide a training/test split. Instead, we used the split provided by "Learning Lightness from Human Judgement on Relative Reflectance, Narihira et al., CVPR 2015" for our experiments. To evaluate the network performance on relative reflectance judgment:
 ```base
 cd iiw_experiments/
