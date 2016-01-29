@@ -1,0 +1,359 @@
+layer {
+  name: "local1"
+  type: "DummyData"
+  top: "local1"
+  dummy_data_param {
+    shape {
+      dim: 1
+      dim: 3
+      dim: 63
+      dim: 63
+    }
+  }
+}
+layer {
+  name: "local2"
+  type: "DummyData"
+  top: "local2"
+  dummy_data_param {
+    shape {
+      dim: 1
+      dim: 3
+      dim: 63
+      dim: 63
+    }
+  }
+}
+layer {
+  name: "coords"
+  type: "DummyData"
+  top: "coords"
+  dummy_data_param {
+    shape {
+      dim: 1
+      dim: 4
+      dim: 1
+      dim: 1
+    }
+  }
+}
+layer {
+  name: "context"
+  type: "DummyData"
+  top: "context"
+  dummy_data_param {
+    shape {
+      dim: 1
+      dim: 3
+      dim: 150
+      dim: 150
+    }
+  }
+}
+layer {
+  name: "Convolution1"
+  type: "Convolution"
+  bottom: "local1"
+  top: "Convolution1"
+  param {
+    name: "conv1"
+  }
+  convolution_param {
+    num_output: 16
+    pad: 0
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "ReLU1"
+  type: "ReLU"
+  bottom: "Convolution1"
+  top: "Convolution1"
+}
+layer {
+  name: "Convolution2"
+  type: "Convolution"
+  bottom: "Convolution1"
+  top: "Convolution2"
+  param {
+    name: "conv2"
+  }
+  convolution_param {
+    num_output: 32
+    pad: 0
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "ReLU2"
+  type: "ReLU"
+  bottom: "Convolution2"
+  top: "Convolution2"
+}
+layer {
+  name: "Convolution3"
+  type: "Convolution"
+  bottom: "Convolution2"
+  top: "Convolution3"
+  param {
+    name: "conv3"
+  }
+  convolution_param {
+    num_output: 64
+    pad: 0
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "ReLU3"
+  type: "ReLU"
+  bottom: "Convolution3"
+  top: "Convolution3"
+}
+layer {
+  name: "Convolution4"
+  type: "Convolution"
+  bottom: "Convolution3"
+  top: "Convolution4"
+  param {
+    name: "conv4"
+  }
+  convolution_param {
+    num_output: 64
+    pad: 0
+    kernel_size: 7
+    stride: 1
+  }
+}
+layer {
+  name: "ReLU4"
+  type: "ReLU"
+  bottom: "Convolution4"
+  top: "Convolution4"
+}
+layer {
+  name: "Convolution5"
+  type: "Convolution"
+  bottom: "local2"
+  top: "Convolution5"
+  param {
+    name: "conv1"
+  }
+  convolution_param {
+    num_output: 16
+    pad: 0
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "ReLU5"
+  type: "ReLU"
+  bottom: "Convolution5"
+  top: "Convolution5"
+}
+layer {
+  name: "Convolution6"
+  type: "Convolution"
+  bottom: "Convolution5"
+  top: "Convolution6"
+  param {
+    name: "conv2"
+  }
+  convolution_param {
+    num_output: 32
+    pad: 0
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "ReLU6"
+  type: "ReLU"
+  bottom: "Convolution6"
+  top: "Convolution6"
+}
+layer {
+  name: "Convolution7"
+  type: "Convolution"
+  bottom: "Convolution6"
+  top: "Convolution7"
+  param {
+    name: "conv3"
+  }
+  convolution_param {
+    num_output: 64
+    pad: 0
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "ReLU7"
+  type: "ReLU"
+  bottom: "Convolution7"
+  top: "Convolution7"
+}
+layer {
+  name: "Convolution8"
+  type: "Convolution"
+  bottom: "Convolution7"
+  top: "Convolution8"
+  param {
+    name: "conv4"
+  }
+  convolution_param {
+    num_output: 64
+    pad: 0
+    kernel_size: 7
+    stride: 1
+  }
+}
+layer {
+  name: "ReLU8"
+  type: "ReLU"
+  bottom: "Convolution8"
+  top: "Convolution8"
+}
+
+layer {
+  name: "Convolution9"
+  type: "Convolution"
+  bottom: "context"
+  top: "Convolution9"
+  param {
+    name: "context1"
+  }
+  convolution_param {
+    num_output: 32
+    pad: 2
+    kernel_size: 5
+    stride: 4
+  }
+}
+layer {
+  name: "ReLU9"
+  type: "ReLU"
+  bottom: "Convolution9"
+  top: "Convolution9"
+}
+layer {
+  name: "Convolution10"
+  type: "Convolution"
+  bottom: "Convolution9"
+  top: "Convolution10"
+  param {
+    name: "context2"
+  }
+  convolution_param {
+    num_output: 32
+    pad: 2
+    kernel_size: 5
+    stride: 4
+  }
+}
+layer {
+  name: "ReLU10"
+  type: "ReLU"
+  bottom: "Convolution10"
+  top: "Convolution10"
+}
+layer {
+  name: "Convolution11"
+  type: "Convolution"
+  bottom: "Convolution10"
+  top: "Convolution11"
+  param {
+    name: "context3"
+  }
+  convolution_param {
+    num_output: 32
+    pad: 2
+    kernel_size: 5
+    stride: 4
+  }
+}
+layer {
+  name: "ReLU11"
+  type: "ReLU"
+  bottom: "Convolution11"
+  top: "Convolution11"
+}
+layer {
+  name: "Convolution12"
+  type: "Convolution"
+  bottom: "Convolution11"
+  top: "Convolution12"
+  param {
+    name: "context4"
+  }
+  convolution_param {
+    num_output: 64
+    pad: 0
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "ReLU12"
+  type: "ReLU"
+  bottom: "Convolution12"
+  top: "Convolution12"
+}
+layer {
+  name: "ConcatAll"
+  type: "Concat"
+  bottom: "Convolution4"
+  bottom: "Convolution8"
+  bottom: "Convolution12"
+  bottom: "coords"
+  top: "ConcatAll"
+}
+layer {
+  name: "InnerProduct1"
+  type: "InnerProduct"
+  bottom: "ConcatAll"
+  top: "InnerProduct1"
+  inner_product_param {
+    num_output: 128
+  }
+}
+layer {
+  name: "ReLU13"
+  type: "ReLU"
+  bottom: "InnerProduct1"
+  top: "InnerProduct1"
+}
+layer {
+  name: "InnerProduct2"
+  type: "InnerProduct"
+  bottom: "InnerProduct1"
+  top: "InnerProduct2"
+  inner_product_param {
+    num_output: 128
+  }
+}
+layer {
+  name: "ReLU14"
+  type: "ReLU"
+  bottom: "InnerProduct2"
+  top: "InnerProduct2"
+}
+layer {
+  name: "pred"
+  type: "InnerProduct"
+  bottom: "InnerProduct2"
+  top: "pred"
+  inner_product_param {
+    num_output: 3
+  }
+}
+layer {
+  name: "pred_sm"
+  type: "Softmax"
+  bottom: "pred"
+  top: "pred_sm"
+}

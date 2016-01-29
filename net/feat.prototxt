@@ -1,0 +1,162 @@
+layer {
+  name: "input"
+  type: "DummyData"
+  top: "input"
+  dummy_data_param {
+    shape {
+      dim: 1
+      dim: 3
+      dim: 63
+      dim: 63
+    }
+  }
+}
+layer {
+  name: "Convolution1"
+  type: "Convolution"
+  bottom: "input"
+  top: "Convolution1"
+  param {
+    name: "conv1"
+  }
+  convolution_param {
+    num_output: 16
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "ReLU1"
+  type: "ReLU"
+  bottom: "Convolution1"
+  top: "Convolution1"
+}
+layer {
+  name: "Repack"
+  type: "Repack"
+  bottom: "Convolution1"
+  top: "Repack1"
+  repack_param {
+    operation: PACK_IMAGE
+    stride: 2
+  }
+}
+layer {
+  name: "Convolution2"
+  type: "Convolution"
+  bottom: "Repack1"
+  top: "Convolution2"
+  param {
+    name: "conv2"
+  }
+  convolution_param {
+    num_output: 32
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "ReLU2"
+  type: "ReLU"
+  bottom: "Convolution2"
+  top: "Convolution2"
+}
+layer {
+  name: "Repack"
+  type: "Repack"
+  bottom: "Convolution2"
+  top: "Repack2"
+  repack_param {
+    operation: PACK_IMAGE
+    stride: 2
+  }
+}
+layer {
+  name: "Convolution3"
+  type: "Convolution"
+  bottom: "Repack2"
+  top: "Convolution3"
+  param {
+    name: "conv3"
+  }
+  convolution_param {
+    num_output: 64
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "ReLU3"
+  type: "ReLU"
+  bottom: "Convolution3"
+  top: "Convolution3"
+}
+layer {
+  name: "Repack"
+  type: "Repack"
+  bottom: "Convolution3"
+  top: "Repack3"
+  repack_param {
+    operation: PACK_IMAGE
+    stride: 2
+  }
+}
+
+layer {
+  name: "Convolution4"
+  type: "Convolution"
+  bottom: "Repack3"
+  top: "Convolution4"
+  param {
+    name: "conv4"
+  }
+  convolution_param {
+    num_output: 64
+    pad: 3
+    kernel_size: 7
+    stride: 1
+  }
+}
+
+layer {
+  name: "feat"
+  type: "ReLU"
+  bottom: "Convolution4"
+  top: "Convolution4"
+}
+
+layer {
+  name: "Unpack"
+  type: "Repack"
+  bottom: "Convolution4"
+  top: "Unpack4"
+  repack_param {
+    operation: UNPACK_IMAGE
+    stride: 2
+  }
+}
+
+layer {
+  name: "Unpack"
+  type: "Repack"
+  bottom: "Unpack4"
+  top: "Unpack5"
+  repack_param {
+    operation: UNPACK_IMAGE
+    stride: 2
+  }
+}
+
+layer {
+  name: "DenseFeat"
+  type: "Repack"
+  bottom: "Unpack5"
+  top: "DenseFeat"
+  repack_param {
+    operation: UNPACK_IMAGE
+    stride: 2
+  }
+}
