@@ -28,7 +28,9 @@ and the DenseCRF package:
 cd bell2014/krahenbuhl2013/
 make
 ```
-(If you encounter problems with cmake, it might be that Ubuntu 14.04 (or older version) does not recognize Python 3.4 directly. You will need to add 3.4 to the line with 'set(_PYTHON3_VERSIONS ...)' for the system's 'FindPythonInterp.cmake' and 'FindPythonLibs.cmake' files.)
+Some further notes:
+* If you encounter problems with cmake, it might be that Ubuntu 14.04 (or older version) does not recognize Python 3.4 directly. You will need to add 3.4 to the line with 'set(_PYTHON3_VERSIONS ...)' for the system's 'FindPythonInterp.cmake' and 'FindPythonLibs.cmake' files.
+* If your Protobuf version is below 3.0 (run 'protoc --version' to see), you will need to install the 3.0 version from https://github.com/google/protobuf/releases, and run 'sudo -H pip3 install -U --pre protobuf' to install the corresponding python bindings.
 
 #### Running the demo:
 Once the above installation is complete, running
