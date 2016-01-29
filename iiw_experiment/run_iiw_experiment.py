@@ -1,6 +1,7 @@
 import numpy as np
 import argparse
-import os
+import sys
+sys.path.append('../')
 from util import *
 from bell2014 import image_util
 from bell2014 import judgements
@@ -11,9 +12,9 @@ parser = argparse.ArgumentParser(
 parser.add_argument(
 	'iiw_dir', type=str, help='directory of IIW data')
 parser.add_argument(
-	'output_dir', type=str, help='directory for storing decomposion outputs')
+	'output_dir', type=str, help='directory for storing decomposition outputs')
 parser.add_argument(
-	'-caffe_dir', type=str, default='caffe/', help='Caffe directory')
+	'-caffe_dir', type=str, default='../caffe/', help='Caffe directory')
 parser.add_argument(
 	'-gpu', type=int, default=0, help='GPU ID')
 args = parser.parse_args()
@@ -25,8 +26,8 @@ environ['GLOG_minloglevel'] = '2'
 from caffe import *
 set_mode_gpu()
 set_device(args.gpu)
-feat_net = Net('feat.prototxt', 'rref.caffemodel', 1)
-rref_net = Net('rref.prototxt', 'rref.caffemodel', 1)
+feat_net = Net('../net/feat.prototxt', '../net/rref.caffemodel', 1)
+rref_net = Net('../net/rref.prototxt', '../net/rref.caffemodel', 1)
 test_ids = np.load('iiw_test_ids.npy').astype(int)
 
 for t in range(len(test_ids)):

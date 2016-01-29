@@ -14,7 +14,8 @@ parser.add_argument(
 	'-gpu', type=int, default=0, help='GPU ID')
 
 args = parser.parse_args()
-
+print('Input image file: ' + args.input)
+print('Loading the relative reflectance CNN...')
 caffe_dir = 'caffe/'
 sys.path.append(caffe_dir + '/python')
 # Silence Caffe
@@ -25,10 +26,12 @@ set_mode_gpu()
 set_device(args.gpu)
 feat_net = Net('net/feat.prototxt', 'net/rref.caffemodel', 1)
 rref_net = Net('net/rref.prototxt', 'net/rref.caffemodel', 1)
-
+print('Decomposing...')
 r, s = decompose_single_image(args.input, feat_net, rref_net, srgb=args.srgb)
 base, _ = os.path.splitext(args.input)
 rfile = base + '-r.png'
 sfile = base + '-s.png'
 image_util.save(rfile, r, rescale=True, srgb=args.srgb)
 image_util.save(sfile, s, rescale=True, srgb=args.srgb)
+print('Reflectance output saved to: ' + rfile)
+print('Shading output saved to: ' + sfile)

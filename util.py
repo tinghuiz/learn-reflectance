@@ -32,7 +32,7 @@ def get_local_feat(im, net):
     w = im.shape[1]
     # Half of the local Patch Size (63 - 1)/2. This is needed for padding
     # boundaries
-    hps = (net.blobs['input'].data.shape[2] - 1)/2
+    hps = 31
     im = np.lib.pad(im, ((hps, hps), (hps, hps), (0,0)), 'symmetric')
     rem_y = (im.shape[0]) % 8
     rem_x = (im.shape[1]) % 8
